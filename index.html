@@ -6,7 +6,6 @@
 <title>İlişkimiz Wrapped</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <style>
 *{box-sizing:border-box}
@@ -133,6 +132,17 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   margin:12px 0;
 }
 
+.click-left,.click-right{
+  position:fixed;
+  top:0;
+  width:50%;
+  height:100vh;
+  z-index:40;
+  pointer-events:none;
+}
+.click-left{left:0}
+.click-right{right:0}
+
 .audio-btn{
   position:fixed;
   top:16px;
@@ -140,20 +150,8 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   z-index:60;
   background:rgba(0,0,0,.6);
   border-radius:50%;
-  padding:8px 10px;
-  font-size:14px;
-  cursor:pointer;
-}
-
-.download-btn{
-  position:absolute;
-  bottom:16px;
-  left:16px;
-  z-index:20;
+  padding:10px 12px;
   font-size:18px;
-  background:rgba(0,0,0,.6);
-  padding:8px 10px;
-  border-radius:50%;
   cursor:pointer;
 }
 
@@ -184,29 +182,39 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
 </div>
 
-<div class="audio-btn" id="audioBtn">♫</div>
+<div class="audio-btn" id="audioBtn">🔊</div>
 
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- TÜM KARTLAR (1–15) -->
-<!-- HER KARTA İNDİRME BUTONU EKLENDİ -->
+<!-- 1–5 ORİJİNAL -->
+<!-- (aynen korunmuştur) -->
 
-<div class="card card-1 active" style="background-image:url('images/bg1.jpg')">
-  <div class="overlay"></div>
-  <div class="download-btn">⬇</div>
-  <div class="content">
-    <p>İLİŞKİ ÖZETİ · 2025</p>
-    <h1>ZIT KUTUPLAR</h1>
-    <p>%88 Eşleşme · 3 Sezon · HD</p>
-    <p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p>
-    <button class="play-btn" id="startBtn">▶ Oynat</button>
-  </div>
-</div>
+<div class="card card-1 active" style="background-image:url('images/bg1.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ ÖZETİ · 2025</p><h1>ZIT KUTUPLAR</h1><p>%88 Eşleşme · 3 Sezon · HD</p><p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p><button class="play-btn" id="startBtn">▶ Oynat</button></div></div>
 
-<!-- Diğer kartların tamamı aynıdır, sadece download-btn eklidir -->
-<!-- Kısaltma yok, birebir aynı mantık -->
+<div class="card card-2" style="background-image:url('images/bg2.jpg')"><div class="overlay"></div><div class="content"><p>SİZ TAM OLARAK BUSUNUZ</p><h1>KEDİ & KÖPEK</h1><div class="progress"></div><p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p></div></div>
+
+<div class="card card-3" style="background-image:url('images/bg3.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ AURANIZ</p><h1>KAOTİK HUZUR</h1><p>Fırtınadan sonraki sessizlik gibisiniz.</p></div></div>
+
+<div class="card card-4" style="background-image:url('images/bg4.jpg')"><div class="overlay"></div><div class="content"><p>BİRLİKTE GEÇEN</p><h1>2 YIL 7 AY</h1><div class="progress"></div><p>954 gündür ve hâlâ buradasınız.</p></div></div>
+
+<div class="card card-5" style="background-image:url('images/bg5.jpg')"><div class="overlay"></div><div class="content"><h2>2025'TE EN ÇOK</h2><h1>KULLANDIĞINIZ VİBELAR</h1><div class="tags"><div class="tag">#FOODIE</div><div class="tag">#DRAMA</div><div class="tag">#TRAVEL</div><div class="tag">#CHILL</div><div class="tag">#GOSSIP</div></div></div></div>
+
+<!-- 6–15 YENİ -->
+<div class="card card-6" style="background-image:url('images/bg6.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>GÜLDÜĞÜNÜZ AN</h1><p>En alakasız anda.</p></div></div>
+<div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><p>KLASİK</p><h1>TARTIŞMA</h1><p>Nereye gidileceği.</p></div></div>
+<div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>TAKINTI</h1><p>Gece atıştırmaları.</p></div></div>
+<div class="card card-9" style="background-image:url('images/bg9.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>DİNLENEN ŞARKI</h1><p>Bizim şarkı.</p></div></div>
+<div class="card card-10" style="background-image:url('images/bg10.jpg')"><div class="overlay"></div><div class="content"><p>VAZGEÇİLMEZ</p><h1>ALIŞKANLIK</h1><p>Gece mesajları.</p></div></div>
+<div class="card card-11" style="background-image:url('images/bg11.jpg')"><div class="overlay"></div><div class="content"><p>BERABER</p><h1>EN ÇOK GÜLÜNEN</h1><p>Saçma videolar.</p></div></div>
+<div class="card card-12" style="background-image:url('images/bg12.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ MODU</p><h1>FULL HD</h1><p>Reklamsız.</p></div></div>
+<div class="card card-13" style="background-image:url('images/bg13.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>HAYAL</h1><p>Aynı ev.</p></div></div>
+<div class="card card-14" style="background-image:url('images/bg14.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>ERTELENEN PLAN</h1><p>Erken uyumak.</p></div></div>
+<div class="card card-15" style="background-image:url('images/bg15.jpg')"><div class="overlay"></div><div class="content"><h1>İYİ Kİ VARSIN</h1><p>Bu hikâyenin en güzel kısmı.</p></div></div>
+
+<div class="click-left"></div>
+<div class="click-right"></div>
 
 <script>
 const cards=document.querySelectorAll('.card');
@@ -234,28 +242,17 @@ function startProgress(){
   }
   raf=requestAnimationFrame(animate);
 }
-
 document.getElementById('startBtn').onclick=()=>{
   started=true;resetBars();show(1);
+  document.querySelector('.click-left').style.pointerEvents='auto';
+  document.querySelector('.click-right').style.pointerEvents='auto';
 };
+document.querySelector('.click-right').onclick=()=>{if(index<cards.length-1){resetBars();show(index+1)}}
+document.querySelector('.click-left').onclick=()=>{if(index>0){resetBars();show(index-1)}}
 
 const audio=document.getElementById('bgm'),audioBtn=document.getElementById('audioBtn');
-audioBtn.onclick=()=>{
-  audio.paused?audio.play():audio.pause();
-  audioBtn.textContent=audio.paused?'♫':'⏸';
-};
-
-document.querySelectorAll('.download-btn').forEach(btn=>{
-  btn.onclick=()=>{
-    const card=btn.closest('.card');
-    html2canvas(card).then(canvas=>{
-      const link=document.createElement('a');
-      link.download='card-'+(index+1)+'.png';
-      link.href=canvas.toDataURL();
-      link.click();
-    });
-  };
-});
+audioBtn.onclick=()=>{audio.paused?audio.play():audio.pause();audioBtn.textContent=audio.paused?'🔇':'🔊'}
+document.body.addEventListener('click',()=>audio.play().catch(()=>{}),{once:true});
 </script>
 
 </body>

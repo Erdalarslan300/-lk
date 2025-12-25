@@ -17,7 +17,6 @@ body{
   overflow:hidden;
 }
 
-/* STORY BAR */
 .story-nav{
   position:fixed;
   top:12px;
@@ -41,7 +40,6 @@ body{
   background:#fff;
 }
 
-/* CARDS */
 .card{
   position:absolute;
   inset:0;
@@ -93,7 +91,6 @@ p{font-size:18px;opacity:.9}
   margin:16px 0;
 }
 
-/* CLICK AREAS (BAŞTA PASİF) */
 .click-left,.click-right{
   position:fixed;
   top:0;
@@ -105,7 +102,6 @@ p{font-size:18px;opacity:.9}
 .click-left{left:0}
 .click-right{right:0}
 
-/* AUDIO */
 .audio-btn{
   position:fixed;
   top:16px;
@@ -118,7 +114,6 @@ p{font-size:18px;opacity:.9}
   cursor:pointer;
 }
 
-/* PLAY BUTTON */
 .play-btn{
   margin-top:28px;
   padding:16px 44px;
@@ -154,7 +149,6 @@ p{font-size:18px;opacity:.9}
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- CARD 1 -->
 <div class="card active" style="background-image:url('images/bg1.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -166,7 +160,6 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<!-- CARD 2 -->
 <div class="card" style="background-image:url('images/bg2.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -177,7 +170,6 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<!-- CARD 3 -->
 <div class="card" style="background-image:url('images/bg3.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -187,7 +179,6 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<!-- CARD 4 -->
 <div class="card" style="background-image:url('images/bg4.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -198,7 +189,6 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<!-- CARD 5 -->
 <div class="card" style="background-image:url('images/bg5.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -257,17 +247,14 @@ function startProgress(){
   raf = requestAnimationFrame(animate);
 }
 
-/* PLAY BUTTON FIX */
 document.getElementById('startBtn').onclick = () => {
   started = true;
   resetBars();
   show(1);
-
   document.querySelector('.click-left').style.pointerEvents = 'auto';
   document.querySelector('.click-right').style.pointerEvents = 'auto';
 };
 
-/* MANUAL NAV */
 document.querySelector('.click-right').onclick = () => {
   if(index < cards.length - 1){
     resetBars();
@@ -275,13 +262,12 @@ document.querySelector('.click-right').onclick = () => {
   }
 };
 document.querySelector('.click-left').onclick = () => {
-  if(index > 1){
+  if(index > 0){
     resetBars();
     show(index - 1);
   }
 };
 
-/* AUDIO */
 const audio = document.getElementById('bgm');
 const audioBtn = document.getElementById('audioBtn');
 audioBtn.onclick = () => {

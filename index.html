@@ -113,7 +113,7 @@ p{font-size:18px;opacity:.9}
   cursor:pointer;
 }
 
-/* PLAY BUTTON + SPOTIFY PULSE */
+/* PLAY BUTTON */
 .play-btn{
   margin-top:28px;
   padding:16px 44px;
@@ -124,7 +124,6 @@ p{font-size:18px;opacity:.9}
   cursor:pointer;
   background:#1DB954;
   color:#000;
-  position:relative;
   animation:pulse 1.6s infinite;
 }
 @keyframes pulse{
@@ -169,7 +168,7 @@ p{font-size:18px;opacity:.9}
     <p>SİZ TAM OLARAK BUSUNUZ</p>
     <h1>KEDİ & KÖPEK</h1>
     <div class="progress"></div>
-    <p>Sürekli didişen ama birbirini görmeden 5 dakika duramayan o klasik ikili.</p>
+    <p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p>
   </div>
 </div>
 
@@ -190,7 +189,7 @@ p{font-size:18px;opacity:.9}
     <p>BİRLİKTE GEÇEN</p>
     <h1>2 YIL 7 AY</h1>
     <div class="progress"></div>
-    <p>954 gündür ve hala buradasınız.</p>
+    <p>954 gündür ve hâlâ buradasınız.</p>
   </div>
 </div>
 
@@ -214,58 +213,71 @@ p{font-size:18px;opacity:.9}
 <div class="click-right"></div>
 
 <script>
-const cards=document.querySelectorAll('.card');
-const bars=document.querySelectorAll('.story-nav span i');
-const DURATION=5000;
-let index=0,startTime,raf,started=false;
+const cards = document.querySelectorAll('.card');
+const bars  = document.querySelectorAll('.story-nav span i');
+const DURATION = 5000;
+
+let index = 0;
+let raf = null;
+let started = false;
 
 function resetBars(){
-  bars.forEach(b=>b.style.width='0%');
+  bars.forEach(b => b.style.width = '0%');
 }
 
 function show(i){
   cancelAnimationFrame(raf);
   cards.forEach((c,idx)=>c.classList.toggle('active',idx===i));
-  index=i;
-  if(started) startProgress();
+  index = i;
+  if(started && index > 0){
+    startProgress();
+  }
 }
 
 function startProgress(){
-  startTime=performance.now();
-  const bar=bars[index];
+  const bar = bars[index];
+  const start = performance.now();
+
   function animate(now){
-    const elapsed=now-startTime;
-    const percent=Math.min((elapsed/DURATION)*100,100);
-    bar.style.width=percent+'%';
-    if(elapsed<DURATION){
-      raf=requestAnimationFrame(animate);
-    }else if(index<cards.length-1){
-      show(index+1);
+    const elapsed = now - start;
+    const percent = Math.min(elapsed / DURATION * 100, 100);
+    bar.style.width = percent + '%';
+
+    if(elapsed < DURATION){
+      raf = requestAnimationFrame(animate);
+    } else if(index < cards.length - 1){
+      show(index + 1);
     }
   }
-  raf=requestAnimationFrame(animate);
+  raf = requestAnimationFrame(animate);
 }
 
-document.getElementById('startBtn').onclick=()=>{
+document.getElementById('startBtn').onclick = () => {
+  started = true;
   resetBars();
-  started=true;
   show(1);
 };
 
-document.querySelector('.click-right').onclick=()=>{
-  if(started && index<cards.length-1) show(index+1);
+document.querySelector('.click-right').onclick = () => {
+  if(started && index < cards.length - 1){
+    resetBars();
+    show(index + 1);
+  }
 };
-document.querySelector('.click-left').onclick=()=>{
-  if(started && index>1) show(index-1);
+document.querySelector('.click-left').onclick = () => {
+  if(started && index > 1){
+    resetBars();
+    show(index - 1);
+  }
 };
 
-const audio=document.getElementById('bgm');
-const audioBtn=document.getElementById('audioBtn');
-audioBtn.onclick=()=>{
-  audio.paused?audio.play():audio.pause();
-  audioBtn.textContent=audio.paused?'🔇':'🔊';
+const audio = document.getElementById('bgm');
+const audioBtn = document.getElementById('audioBtn');
+audioBtn.onclick = () => {
+  audio.paused ? audio.play() : audio.pause();
+  audioBtn.textContent = audio.paused ? '🔇' : '🔊';
 };
-document.body.addEventListener('click',()=>audio.play(),{once:true});
+document.body.addEventListener('click',()=>audio.play().catch(()=>{}),{once:true});
 </script>
 
 </body>

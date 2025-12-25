@@ -17,6 +17,7 @@ body{
   overflow:hidden;
 }
 
+/* STORY BAR */
 .story-nav{
   position:fixed;
   top:12px;
@@ -40,6 +41,7 @@ body{
   background:#fff;
 }
 
+/* CARDS */
 .card{
   position:absolute;
   inset:0;
@@ -59,7 +61,7 @@ body{
 
 .content{
   position:relative;
-  z-index:2;
+  z-index:5;
   width:100%;
   text-align:center;
 }
@@ -91,16 +93,19 @@ p{font-size:18px;opacity:.9}
   margin:16px 0;
 }
 
+/* CLICK AREAS (BAŞTA PASİF) */
 .click-left,.click-right{
   position:fixed;
   top:0;
   width:50%;
   height:100vh;
   z-index:40;
+  pointer-events:none;
 }
 .click-left{left:0}
 .click-right{right:0}
 
+/* AUDIO */
 .audio-btn{
   position:fixed;
   top:16px;
@@ -149,7 +154,7 @@ p{font-size:18px;opacity:.9}
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- CARD 1 / INTRO -->
+<!-- CARD 1 -->
 <div class="card active" style="background-image:url('images/bg1.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -252,25 +257,31 @@ function startProgress(){
   raf = requestAnimationFrame(animate);
 }
 
+/* PLAY BUTTON FIX */
 document.getElementById('startBtn').onclick = () => {
   started = true;
   resetBars();
   show(1);
+
+  document.querySelector('.click-left').style.pointerEvents = 'auto';
+  document.querySelector('.click-right').style.pointerEvents = 'auto';
 };
 
+/* MANUAL NAV */
 document.querySelector('.click-right').onclick = () => {
-  if(started && index < cards.length - 1){
+  if(index < cards.length - 1){
     resetBars();
     show(index + 1);
   }
 };
 document.querySelector('.click-left').onclick = () => {
-  if(started && index > 1){
+  if(index > 1){
     resetBars();
     show(index - 1);
   }
 };
 
+/* AUDIO */
 const audio = document.getElementById('bgm');
 const audioBtn = document.getElementById('audioBtn');
 audioBtn.onclick = () => {

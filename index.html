@@ -84,13 +84,6 @@
       box-shadow: inset 0 -4px 0 #1DB954;
     }
 
-    .progress {
-      height: 8px;
-      border-radius: 8px;
-      background: linear-gradient(90deg,#ff4ecd,#7b61ff);
-      margin: 16px 0;
-    }
-
     .click-left,.click-right {
       position: fixed;
       top: 0;
@@ -113,10 +106,10 @@
       cursor: pointer;
     }
 
-    /* OYNAT BUTONU */
+    /* SPOTIFY TARZI PULSE */
     .play-btn {
       margin-top: 28px;
-      padding: 14px 36px;
+      padding: 16px 40px;
       font-size: 18px;
       font-weight: 700;
       border-radius: 999px;
@@ -124,6 +117,13 @@
       cursor: pointer;
       background: #1DB954;
       color: #000;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(29,185,84,.7); }
+      70% { box-shadow: 0 0 0 18px rgba(29,185,84,0); }
+      100% { box-shadow: 0 0 0 0 rgba(29,185,84,0); }
     }
   </style>
 </head>
@@ -143,7 +143,7 @@
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- CARD 1 -->
+<!-- INTRO / SPLASH -->
 <div class="card active" style="background-image:url('images/bg1.jpg')">
   <div class="overlay"></div>
   <div class="content">
@@ -151,58 +151,43 @@
     <h1>ZIT KUTUPLAR</h1>
     <p>%88 Eşleşme · 3 Sezon · HD</p>
     <p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p>
-
-    <!-- OYNAT BUTONU -->
-    <button class="play-btn" onclick="show(1)">▶ Oynat</button>
+    <button class="play-btn" id="startBtn">▶ Oynat</button>
   </div>
 </div>
 
-<!-- CARD 2 -->
+<!-- DİĞER KARTLAR -->
 <div class="card" style="background-image:url('images/bg2.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>SİZ TAM OLARAK BUSUNUZ</p>
     <h1>KEDİ & KÖPEK</h1>
-    <div class="progress"></div>
     <p>Sürekli didişen ama birbirini görmeden 5 dakika duramayan o klasik ikili.</p>
   </div>
 </div>
 
-<!-- CARD 3 -->
 <div class="card" style="background-image:url('images/bg3.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>İLİŞKİ AURANIZ</p>
     <h1>KAOTİK HUZUR</h1>
-    <p>Fırtınadan sonraki sessizlik gibisiniz. Biri yakıyor, diğeri söndürüyor.</p>
+    <p>Fırtınadan sonraki sessizlik gibisiniz.</p>
   </div>
 </div>
 
-<!-- CARD 4 -->
 <div class="card" style="background-image:url('images/bg4.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>BİRLİKTE GEÇEN</p>
     <h1>2 YIL 7 AY</h1>
-    <p>Toplam 954 gündür ve hala birbirinizi boğmadınız.</p>
-    <div class="progress"></div>
-    <p>Oğlak & Yengeç · %88 Uyum</p>
+    <p>Toplam 954 gün.</p>
   </div>
 </div>
 
-<!-- CARD 5 -->
 <div class="card" style="background-image:url('images/bg5.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <h2>2025'TE EN ÇOK</h2>
     <h1>KULLANDIĞINIZ VİBELAR</h1>
-    <div class="tags">
-      <div class="tag">#FOODIE</div>
-      <div class="tag">#DRAMA</div>
-      <div class="tag">#TRAVEL</div>
-      <div class="tag">#CHILL</div>
-      <div class="tag">#GOSSIP</div>
-    </div>
   </div>
 </div>
 
@@ -217,13 +202,14 @@
   let index = 0;
   let startTime;
   let raf;
+  let started = false;
 
   function show(i) {
     cancelAnimationFrame(raf);
     cards.forEach((c, idx) => c.classList.toggle('active', idx === i));
     bars.forEach((b, idx) => b.style.width = idx < i ? '100%' : '0%');
     index = i;
-    startProgress();
+    if (started) startProgress();
   }
 
   function startProgress() {
@@ -244,11 +230,9 @@
     raf = requestAnimationFrame(animate);
   }
 
-  document.querySelector('.click-right').onclick = () => {
-    if (index < cards.length - 1) show(index + 1);
-  };
-  document.querySelector('.click-left').onclick = () => {
-    if (index > 0) show(index - 1);
+  document.getElementById('startBtn').onclick = () => {
+    started = true;
+    show(1);
   };
 
   const audio = document.getElementById('bgm');
@@ -256,10 +240,6 @@
 
   function updateIcon() {
     audioBtn.textContent = audio.paused ? '🔇' : '🔊';
-  }
-
-  function tryAutoPlay() {
-    audio.play().then(updateIcon).catch(updateIcon);
   }
 
   audioBtn.onclick = () => {
@@ -271,8 +251,7 @@
     if (audio.paused) audio.play().then(updateIcon);
   }, { once: true });
 
-  show(0);
-  tryAutoPlay();
+  updateIcon();
 </script>
 
 </body>

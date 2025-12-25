@@ -55,7 +55,7 @@ body{
   background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.85));
 }
 
-/* === SADECE DEĞİŞTİRİLEN KISIM === */
+/* CONTENT KONUMU (AYNI) */
 .content{
   position:absolute;
   bottom:64px;
@@ -66,8 +66,37 @@ body{
   max-width:520px;
   padding:0 24px;
   text-align:center;
+  opacity:0;
 }
-/* =============================== */
+
+/* === GİRİŞ ANİMASYONLARI === */
+.card-1 .content{animation:fadeUp .8s ease forwards}
+.card-2 .content{animation:slideRight .8s ease forwards}
+.card-3 .content{animation:zoomIn .8s ease forwards}
+.card-4 .content{animation:slideLeft .8s ease forwards}
+.card-5 .content{animation:fadeDown .8s ease forwards}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translate(-50%,40px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+@keyframes slideRight{
+  from{opacity:0;transform:translate(calc(-50% + 60px),0)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+@keyframes slideLeft{
+  from{opacity:0;transform:translate(calc(-50% - 60px),0)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+@keyframes zoomIn{
+  from{opacity:0;transform:translate(-50%,0) scale(.85)}
+  to{opacity:1;transform:translate(-50%,0) scale(1)}
+}
+@keyframes fadeDown{
+  from{opacity:0;transform:translate(-50%,-40px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+/* ========================== */
 
 h1{font-size:40px;font-weight:800}
 h2{font-size:32px;font-weight:700}
@@ -154,7 +183,7 @@ p{font-size:18px;opacity:.9}
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card active" style="background-image:url('images/bg1.jpg')">
+<div class="card card-1 active" style="background-image:url('images/bg1.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>İLİŞKİ ÖZETİ · 2025</p>
@@ -165,7 +194,7 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<div class="card" style="background-image:url('images/bg2.jpg')">
+<div class="card card-2" style="background-image:url('images/bg2.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>SİZ TAM OLARAK BUSUNUZ</p>
@@ -175,7 +204,7 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<div class="card" style="background-image:url('images/bg3.jpg')">
+<div class="card card-3" style="background-image:url('images/bg3.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>İLİŞKİ AURANIZ</p>
@@ -184,7 +213,7 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<div class="card" style="background-image:url('images/bg4.jpg')">
+<div class="card card-4" style="background-image:url('images/bg4.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <p>BİRLİKTE GEÇEN</p>
@@ -194,7 +223,7 @@ p{font-size:18px;opacity:.9}
   </div>
 </div>
 
-<div class="card" style="background-image:url('images/bg5.jpg')">
+<div class="card card-5" style="background-image:url('images/bg5.jpg')">
   <div class="overlay"></div>
   <div class="content">
     <h2>2025'TE EN ÇOK</h2>
@@ -227,7 +256,10 @@ function resetBars(){
 
 function show(i){
   cancelAnimationFrame(raf);
-  cards.forEach((c,idx)=>c.classList.toggle('active',idx===i));
+  cards.forEach((c,idx)=>{
+    c.classList.toggle('active',idx===i);
+    c.querySelector('.content').style.opacity = 0;
+  });
   index = i;
   if(started && index > 0){
     startProgress();

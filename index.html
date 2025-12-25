@@ -68,12 +68,21 @@ body{
   opacity:0;
 }
 
-/* === GİRİŞ ANİMASYONLARI === */
 .card-1 .content{animation:fadeUp .8s ease forwards}
 .card-2 .content{animation:slideRight .8s ease forwards}
 .card-3 .content{animation:zoomIn .8s ease forwards}
 .card-4 .content{animation:slideLeft .8s ease forwards}
 .card-5 .content{animation:fadeDown .8s ease forwards}
+.card-6 .content,
+.card-7 .content,
+.card-8 .content,
+.card-9 .content,
+.card-10 .content,
+.card-11 .content,
+.card-12 .content,
+.card-13 .content,
+.card-14 .content,
+.card-15 .content{animation:fadeUp .8s ease forwards}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translate(-50%,40px)}
@@ -95,25 +104,10 @@ body{
   from{opacity:0;transform:translate(-50%,-40px)}
   to{opacity:1;transform:translate(-50%,0)}
 }
-/* ========================== */
 
-/* === SADECE BOŞLUKLAR AZALTILDI === */
-h1{
-  font-size:40px;
-  font-weight:800;
-  margin:6px 0;
-}
-h2{
-  font-size:32px;
-  font-weight:700;
-  margin:6px 0;
-}
-p{
-  font-size:18px;
-  opacity:.9;
-  margin:4px 0;
-}
-/* ================================= */
+h1{font-size:40px;font-weight:800;margin:6px 0}
+h2{font-size:32px;font-weight:700;margin:6px 0}
+p{font-size:18px;opacity:.9;margin:4px 0}
 
 .tags{
   display:flex;
@@ -183,11 +177,9 @@ p{
 <body>
 
 <div class="story-nav">
-  <span><i></i></span>
-  <span><i></i></span>
-  <span><i></i></span>
-  <span><i></i></span>
-  <span><i></i></span>
+  <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
+  <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
+  <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
 </div>
 
 <div class="audio-btn" id="audioBtn">🔊</div>
@@ -196,134 +188,70 @@ p{
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card card-1 active" style="background-image:url('images/bg1.jpg')">
-  <div class="overlay"></div>
-  <div class="content">
-    <p>İLİŞKİ ÖZETİ · 2025</p>
-    <h1>ZIT KUTUPLAR</h1>
-    <p>%88 Eşleşme · 3 Sezon · HD</p>
-    <p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p>
-    <button class="play-btn" id="startBtn">▶ Oynat</button>
-  </div>
-</div>
+<!-- 1–5 ORİJİNAL -->
+<!-- (aynen korunmuştur) -->
 
-<div class="card card-2" style="background-image:url('images/bg2.jpg')">
-  <div class="overlay"></div>
-  <div class="content">
-    <p>SİZ TAM OLARAK BUSUNUZ</p>
-    <h1>KEDİ & KÖPEK</h1>
-    <div class="progress"></div>
-    <p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p>
-  </div>
-</div>
+<div class="card card-1 active" style="background-image:url('images/bg1.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ ÖZETİ · 2025</p><h1>ZIT KUTUPLAR</h1><p>%88 Eşleşme · 3 Sezon · HD</p><p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p><button class="play-btn" id="startBtn">▶ Oynat</button></div></div>
 
-<div class="card card-3" style="background-image:url('images/bg3.jpg')">
-  <div class="overlay"></div>
-  <div class="content">
-    <p>İLİŞKİ AURANIZ</p>
-    <h1>KAOTİK HUZUR</h1>
-    <p>Fırtınadan sonraki sessizlik gibisiniz.</p>
-  </div>
-</div>
+<div class="card card-2" style="background-image:url('images/bg2.jpg')"><div class="overlay"></div><div class="content"><p>SİZ TAM OLARAK BUSUNUZ</p><h1>KEDİ & KÖPEK</h1><div class="progress"></div><p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p></div></div>
 
-<div class="card card-4" style="background-image:url('images/bg4.jpg')">
-  <div class="overlay"></div>
-  <div class="content">
-    <p>BİRLİKTE GEÇEN</p>
-    <h1>2 YIL 7 AY</h1>
-    <div class="progress"></div>
-    <p>954 gündür ve hâlâ buradasınız.</p>
-  </div>
-</div>
+<div class="card card-3" style="background-image:url('images/bg3.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ AURANIZ</p><h1>KAOTİK HUZUR</h1><p>Fırtınadan sonraki sessizlik gibisiniz.</p></div></div>
 
-<div class="card card-5" style="background-image:url('images/bg5.jpg')">
-  <div class="overlay"></div>
-  <div class="content">
-    <h2>2025'TE EN ÇOK</h2>
-    <h1>KULLANDIĞINIZ VİBELAR</h1>
-    <div class="tags">
-      <div class="tag">#FOODIE</div>
-      <div class="tag">#DRAMA</div>
-      <div class="tag">#TRAVEL</div>
-      <div class="tag">#CHILL</div>
-      <div class="tag">#GOSSIP</div>
-    </div>
-  </div>
-</div>
+<div class="card card-4" style="background-image:url('images/bg4.jpg')"><div class="overlay"></div><div class="content"><p>BİRLİKTE GEÇEN</p><h1>2 YIL 7 AY</h1><div class="progress"></div><p>954 gündür ve hâlâ buradasınız.</p></div></div>
+
+<div class="card card-5" style="background-image:url('images/bg5.jpg')"><div class="overlay"></div><div class="content"><h2>2025'TE EN ÇOK</h2><h1>KULLANDIĞINIZ VİBELAR</h1><div class="tags"><div class="tag">#FOODIE</div><div class="tag">#DRAMA</div><div class="tag">#TRAVEL</div><div class="tag">#CHILL</div><div class="tag">#GOSSIP</div></div></div></div>
+
+<!-- 6–15 YENİ -->
+<div class="card card-6" style="background-image:url('images/bg6.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>GÜLDÜĞÜNÜZ AN</h1><p>En alakasız anda.</p></div></div>
+<div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><p>KLASİK</p><h1>TARTIŞMA</h1><p>Nereye gidileceği.</p></div></div>
+<div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>TAKINTI</h1><p>Gece atıştırmaları.</p></div></div>
+<div class="card card-9" style="background-image:url('images/bg9.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>DİNLENEN ŞARKI</h1><p>Bizim şarkı.</p></div></div>
+<div class="card card-10" style="background-image:url('images/bg10.jpg')"><div class="overlay"></div><div class="content"><p>VAZGEÇİLMEZ</p><h1>ALIŞKANLIK</h1><p>Gece mesajları.</p></div></div>
+<div class="card card-11" style="background-image:url('images/bg11.jpg')"><div class="overlay"></div><div class="content"><p>BERABER</p><h1>EN ÇOK GÜLÜNEN</h1><p>Saçma videolar.</p></div></div>
+<div class="card card-12" style="background-image:url('images/bg12.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ MODU</p><h1>FULL HD</h1><p>Reklamsız.</p></div></div>
+<div class="card card-13" style="background-image:url('images/bg13.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>HAYAL</h1><p>Aynı ev.</p></div></div>
+<div class="card card-14" style="background-image:url('images/bg14.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>ERTELENEN PLAN</h1><p>Erken uyumak.</p></div></div>
+<div class="card card-15" style="background-image:url('images/bg15.jpg')"><div class="overlay"></div><div class="content"><h1>İYİ Kİ VARSIN</h1><p>Bu hikâyenin en güzel kısmı.</p></div></div>
 
 <div class="click-left"></div>
 <div class="click-right"></div>
 
 <script>
-const cards = document.querySelectorAll('.card');
-const bars  = document.querySelectorAll('.story-nav span i');
-const DURATION = 8000;
+const cards=document.querySelectorAll('.card');
+const bars=document.querySelectorAll('.story-nav span i');
+const DURATION=8000;
+let index=0,raf=null,started=false;
 
-let index = 0;
-let raf = null;
-let started = false;
-
-function resetBars(){
-  bars.forEach(b => b.style.width = '0%');
-}
-
+function resetBars(){bars.forEach(b=>b.style.width='0%')}
 function show(i){
   cancelAnimationFrame(raf);
   cards.forEach((c,idx)=>{
     c.classList.toggle('active',idx===i);
-    c.querySelector('.content').style.opacity = 0;
+    c.querySelector('.content').style.opacity=0;
   });
-  index = i;
-  if(started && index > 0){
-    startProgress();
-  }
+  index=i;
+  if(started && index>0) startProgress();
 }
-
 function startProgress(){
-  const bar = bars[index];
-  const start = performance.now();
-
+  const bar=bars[index],start=performance.now();
   function animate(now){
-    const elapsed = now - start;
-    const percent = Math.min(elapsed / DURATION * 100, 100);
-    bar.style.width = percent + '%';
-
-    if(elapsed < DURATION){
-      raf = requestAnimationFrame(animate);
-    } else if(index < cards.length - 1){
-      show(index + 1);
-    }
+    const e=now-start;
+    bar.style.width=Math.min(e/DURATION*100,100)+'%';
+    if(e<DURATION) raf=requestAnimationFrame(animate);
+    else if(index<cards.length-1) show(index+1);
   }
-  raf = requestAnimationFrame(animate);
+  raf=requestAnimationFrame(animate);
 }
+document.getElementById('startBtn').onclick=()=>{
+  started=true;resetBars();show(1);
+  document.querySelector('.click-left').style.pointerEvents='auto';
+  document.querySelector('.click-right').style.pointerEvents='auto';
+};
+document.querySelector('.click-right').onclick=()=>{if(index<cards.length-1){resetBars();show(index+1)}}
+document.querySelector('.click-left').onclick=()=>{if(index>0){resetBars();show(index-1)}}
 
-document.getElementById('startBtn').onclick = () => {
-  started = true;
-  resetBars();
-  show(1);
-  document.querySelector('.click-left').style.pointerEvents = 'auto';
-  document.querySelector('.click-right').style.pointerEvents = 'auto';
-};
-
-document.querySelector('.click-right').onclick = () => {
-  if(index < cards.length - 1){
-    resetBars();
-    show(index + 1);
-  }
-};
-document.querySelector('.click-left').onclick = () => {
-  if(index > 0){
-    resetBars();
-    show(index - 1);
-  }
-};
-
-const audio = document.getElementById('bgm');
-const audioBtn = document.getElementById('audioBtn');
-audioBtn.onclick = () => {
-  audio.paused ? audio.play() : audio.pause();
-  audioBtn.textContent = audio.paused ? '🔇' : '🔊';
-};
+const audio=document.getElementById('bgm'),audioBtn=document.getElementById('audioBtn');
+audioBtn.onclick=()=>{audio.paused?audio.play():audio.pause();audioBtn.textContent=audio.paused?'🔇':'🔊'}
 document.body.addEventListener('click',()=>audio.play().catch(()=>{}),{once:true});
 </script>
 

@@ -46,10 +46,8 @@ body{
   background-size:cover;
   background-position:center;
   display:none;
-  padding:64px 28px;
-  justify-content:flex-end;
 }
-.card.active{display:flex}
+.card.active{display:block}
 
 .overlay{
   position:absolute;
@@ -57,12 +55,19 @@ body{
   background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.85));
 }
 
+/* === SADECE DEĞİŞTİRİLEN KISIM === */
 .content{
-  position:relative;
+  position:absolute;
+  bottom:64px;
+  left:50%;
+  transform:translateX(-50%);
   z-index:5;
   width:100%;
+  max-width:520px;
+  padding:0 24px;
   text-align:center;
 }
+/* =============================== */
 
 h1{font-size:40px;font-weight:800}
 h2{font-size:32px;font-weight:700}
@@ -279,4 +284,3 @@ document.body.addEventListener('click',()=>audio.play().catch(()=>{}),{once:true
 
 </body>
 </html>
-

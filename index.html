@@ -256,6 +256,27 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   color:#000;
   animation:pulse 1.6s infinite;
 }
+
+/* Başa Dön Butonu Özel Stili */
+.restart-btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  background: transparent;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.restart-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(29,185,84,.7)}
   70%{box-shadow:0 0 0 25px rgba(29,185,84,0)}
@@ -416,6 +437,7 @@ p{font-size:18px;opacity:.9;margin:4px 0}
     <p style="font-size: 20px; opacity: 0.7; letter-spacing: 2px;">2025'in en güzel anı sendin.</p>
     <div class="progress" style="width: 100px; margin: 20px auto; background: #fff;"></div>
     <p style="font-size: 14px;">Seni Seviyorum</p>
+    <button class="restart-btn" id="restartBtn">↺ Tekrar İzle</button>
   </div>
 </div>
 
@@ -454,6 +476,16 @@ document.getElementById('startBtn').onclick=()=>{
   document.querySelector('.click-left').style.pointerEvents='auto';
   document.querySelector('.click-right').style.pointerEvents='auto';
 };
+
+// Başa Dönme İşlemi
+document.getElementById('restartBtn').onclick=()=>{
+  started=true; 
+  resetBars(); 
+  show(0); // İlk karta dön
+  // İlk kartta "Oynat" butonu olduğu için otomatik ilerlemeyi durdurmak gerekirse show(0) yeterli. 
+  // Ama doğrudan akış başlasın isterseniz show(1) yapılabilir. Show(0) en güvenlisidir.
+};
+
 document.querySelector('.click-right').onclick=()=>{if(index<cards.length-1){resetBars();show(index+1)}}
 document.querySelector('.click-left').onclick=()=>{if(index>0){resetBars();show(index-1)}}
 

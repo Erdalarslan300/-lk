@@ -95,38 +95,39 @@ body{
 .card-2 .content {
   bottom: 50% !important;
   transform: translate(-50%, 50%) !important;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.8); /* Yazı vurgusu */
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
-.card-2 .content h1 {
-  font-size: 48px;
-  letter-spacing: -1px;
-}
-
+/* Animasyonlar */
 .card-1 .content{animation:fadeUp .8s ease forwards}
 .card-2 .content{animation:slideRightCenter .8s ease forwards}
 .card-3 .content{animation:zoomIn .8s ease forwards}
 .card-4 .content{animation:slideLeft .8s ease forwards}
 .card-5 .content{animation:fadeDown .8s ease forwards}
-.card-6 .content,
-.card-7 .content,
-.card-8 .content,
-.card-9 .content,
-.card-10 .content,
-.card-11 .content,
-.card-12 .content,
-.card-13 .content,
-.card-14 .content,
-.card-15 .content{animation:fadeUp .8s ease forwards}
+
+/* Yeni Kart Animasyon Atamaları */
+.card-6 .content { animation: zoomIn 1s ease forwards; }
+.card-7 .content { animation: slideLeft 1s ease forwards; }
+.card-8 .content { animation: fadeUp 1s ease forwards; }
+.card-9 .content { animation: zoomIn 0.8s ease forwards; }
+.card-10 .content { animation: slideRight 1s ease forwards; }
+.card-11 .content { animation: fadeDown 1s ease forwards; }
+.card-12 .content { animation: zoomIn 1.2s ease forwards; }
+.card-13 .content { animation: fadeUp 1s ease forwards; }
+.card-14 .content { animation: slideLeft 1.2s ease forwards; }
+.card-15 .content { animation: zoomIn 1.5s ease forwards; }
 
 @keyframes fadeUp{
   from{opacity:0;transform:translate(-50%,40px)}
   to{opacity:1;transform:translate(-50%,0)}
 }
-/* 2. Kart için ortalanmış animasyon */
 @keyframes slideRightCenter{
   from{opacity:0;transform:translate(calc(-50% + 60px), 50%)}
   to{opacity:1;transform:translate(-50%, 50%)}
+}
+@keyframes slideRight{
+  from{opacity:0;transform:translate(calc(-50% + 60px), 0)}
+  to{opacity:1;transform:translate(-50%, 0)}
 }
 @keyframes slideLeft{
   from{opacity:0;transform:translate(calc(-50% - 60px),0)}
@@ -144,6 +145,32 @@ body{
 h1{font-size:40px;font-weight:800;margin:6px 0}
 h2{font-size:32px;font-weight:700;margin:6px 0}
 p{font-size:18px;opacity:.9;margin:4px 0}
+
+/* Yeni Bileşen Stilleri */
+.stat-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 15px 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.big-number {
+  display: block;
+  font-size: 64px;
+  font-weight: 800;
+  color: #1DB954;
+  margin: 10px 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-weight: 600;
+}
 
 .tags{
   display:flex;
@@ -252,16 +279,25 @@ p{font-size:18px;opacity:.9;margin:4px 0}
 
 <div class="card card-5" style="background-image:url('images/bg5.jpg')"><div class="overlay"></div><div class="content"><h2>2025'TE EN ÇOK</h2><h1>KULLANDIĞINIZ VİBELAR</h1><div class="tags"><div class="tag">#FOODIE</div><div class="tag">#DRAMA</div><div class="tag">#TRAVEL</div><div class="tag">#CHILL</div><div class="tag">#GOSSIP</div></div></div></div>
 
-<div class="card card-6" style="background-image:url('images/bg6.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>GÜLDÜĞÜNÜZ AN</h1><p>En alakasız anda.</p></div></div>
-<div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><p>KLASİK</p><h1>TARTIŞMA</h1><p>Nereye gidileceği.</p></div></div>
-<div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>TAKINTI</h1><p>Gece atıştırmaları.</p></div></div>
-<div class="card card-9" style="background-image:url('images/bg9.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>DİNLENEN ŞARKI</h1><p>Bizim şarkı.</p></div></div>
-<div class="card card-10" style="background-image:url('images/bg10.jpg')"><div class="overlay"></div><div class="content"><p>VAZGEÇİLMEZ</p><h1>ALIŞKANLIK</h1><p>Gece mesajları.</p></div></div>
-<div class="card card-11" style="background-image:url('images/bg11.jpg')"><div class="overlay"></div><div class="content"><p>BERABER</p><h1>EN ÇOK GÜLÜNEN</h1><p>Saçma videolar.</p></div></div>
-<div class="card card-12" style="background-image:url('images/bg12.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ MODU</p><h1>FULL HD</h1><p>Reklamsız.</p></div></div>
-<div class="card card-13" style="background-image:url('images/bg13.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>HAYAL</h1><p>Aynı ev.</p></div></div>
-<div class="card card-14" style="background-image:url('images/bg14.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>ERTELENEN PLAN</h1><p>Erken uyumak.</p></div></div>
-<div class="card card-15" style="background-image:url('images/bg15.jpg')"><div class="overlay"></div><div class="content"><h1>İYİ Kİ VARSIN</h1><p>Bu hikâyenin en güzel kısmı.</p></div></div>
+<div class="card card-6" style="background-image:url('images/bg6.jpg')"><div class="overlay"></div><div class="content"><p>TOPLAMDA YAKLAŞIK</p><span class="big-number">12.450</span><p>Kere birbirinizi güldürdünüz.</p><p style="font-size:14px; margin-top:10px;">(En çok saçma videolara)</p></div></div>
+
+<div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><h2>NE YİYECEĞİMİZE</h2><h1>KARAR VEREMEME</h1><div class="stat-box"><p>Ortalama Karar Süresi</p><span class="big-number" style="color:#ff4ecd">45 DK</span><div class="progress"></div><p>Ama sonuç hep aynı: "Sen ne istersen o."</p></div></div></div>
+
+<div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK KULLANILAN</p><h1>GECE MESAJLARI</h1><div class="stat-box"><div class="list-item"><span>"Uyudun mu?"</span><span>420 kez</span></div><div class="list-item"><span>"Seni seviyorum"</span><span>∞ kez</span></div><div class="list-item"><span>"Acıktım..."</span><span>185 kez</span></div></div></div></div>
+
+<div class="card card-9" style="background-image:url('images/bg9.jpg')"><div class="overlay"></div><div class="content"><p>BU YILIN SOUNDTRACK'İ</p><div style="margin:20px auto; width:120px; height:120px; border-radius:50%; background:linear-gradient(45deg, #1DB954, #fff); display:flex; align-items:center; justify-content:center; color:#000; font-size:40px;">🎵</div><h1>BİZİM ŞARKI</h1><p>Tekrar tekrar çalındı.</p></div></div>
+
+<div class="card card-10" style="background-image:url('images/bg10.jpg')"><div class="overlay"></div><div class="content"><h2>TARTIŞMALARIN</h2><h1>%99 SEBEBİ</h1><div class="stat-box" style="border-color:#E50914"><p style="color:#E50914; font-weight:800; font-size:24px;">YANLIŞ ANLAŞILMA</p><p>Geri kalan %1 ise gerçekten haksız olman.</p></div></div></div>
+
+<div class="card card-11" style="background-image:url('images/bg11.jpg')"><div class="overlay"></div><div class="content"><p>GEZİLEN YERLER</p><h1>7 ŞEHİR & 120 MEKAN</h1><div class="tags"><div class="tag">📍 İstanbul</div><div class="tag">📍 İzmir</div><div class="tag">📍 Mutfak</div></div><p>Ve sayısız anı toplandı.</p></div></div>
+
+<div class="card card-12" style="background-image:url('images/bg12.jpg')"><div class="overlay"></div><div class="content"><p>TOPLAM İZLEME SÜRESİ</p><h1>BİNLERCE SAAT</h1><div class="stat-box"><p>Favori Türümüz:</p><h2>SUÇ VE GİZEM</h2><p>Aslında birbirimizi izlemeyi daha çok sevdik.</p></div></div></div>
+
+<div class="card card-13" style="background-image:url('images/bg13.jpg')"><div class="overlay"></div><div class="content"><p>2026 TAHMİNİ</p><h1>AYNI EVDE KAHVALTI</h1><div class="progress" style="background:#46d369"></div><p>Yükleniyor: %95</p></div></div>
+
+<div class="card card-14" style="background-image:url('images/bg14.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK İHLAL EDİLEN KURAL</p><h1>"BUGÜN ERKEN UYUYALIM"</h1><div class="stat-box"><p>Başarı Oranı</p><span class="big-number" style="color:red">%2</span></div></div></div>
+
+<div class="card card-15" style="background-image:url('images/bg15.jpg')"><div class="overlay"></div><div class="content"><h1>İYİ Kİ VARSIN</h1><p>2025'in en güzel istatistiği sendin.</p><div style="font-size:50px; margin-top:20px;">❤️</div></div></div>
 
 <div class="click-left"></div>
 <div class="click-right"></div>
@@ -277,7 +313,8 @@ function show(i){
   cancelAnimationFrame(raf);
   cards.forEach((c,idx)=>{
     c.classList.toggle('active',idx===i);
-    c.querySelector('.content').style.opacity=0;
+    const content = c.querySelector('.content');
+    if(content) content.style.opacity=1; // Animasyonların çalışması için görünür kıldık
   });
   index=i;
   if(started && index>0) startProgress();

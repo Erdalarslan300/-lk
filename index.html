@@ -17,6 +17,24 @@ body{
   overflow:hidden;
 }
 
+/* Netflix N Logo Stili */
+.netflix-logo {
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  font-size: 42px;
+  font-weight: 900;
+  color: #E50914; /* Netflix Kırmızısı */
+  z-index: 100;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.match-text {
+  color: #46d369; /* Netflix Yeşil Eşleşme Rengi */
+  font-weight: 700;
+}
+
 .story-nav{
   position:fixed;
   top:12px;
@@ -188,10 +206,17 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 1–5 ORİJİNAL -->
-<!-- (aynen korunmuştur) -->
-
-<div class="card card-1 active" style="background-image:url('images/bg1.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ ÖZETİ · 2025</p><h1>ZIT KUTUPLAR</h1><p>%88 Eşleşme · 3 Sezon · HD</p><p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p><button class="play-btn" id="startBtn">▶ Oynat</button></div></div>
+<div class="card card-1 active" style="background-image:url('images/bg1.jpg')">
+  <div class="netflix-logo">N</div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p>İLİŞKİ ÖZETİ · 2025</p>
+    <h1>ZIT KUTUPLAR</h1>
+    <p><span class="match-text">%88 Eşleşme</span> · 3 Sezon · HD</p>
+    <p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p>
+    <button class="play-btn" id="startBtn">▶ Oynat</button>
+  </div>
+</div>
 
 <div class="card card-2" style="background-image:url('images/bg2.jpg')"><div class="overlay"></div><div class="content"><p>SİZ TAM OLARAK BUSUNUZ</p><h1>KEDİ & KÖPEK</h1><div class="progress"></div><p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p></div></div>
 
@@ -201,7 +226,6 @@ p{font-size:18px;opacity:.9;margin:4px 0}
 
 <div class="card card-5" style="background-image:url('images/bg5.jpg')"><div class="overlay"></div><div class="content"><h2>2025'TE EN ÇOK</h2><h1>KULLANDIĞINIZ VİBELAR</h1><div class="tags"><div class="tag">#FOODIE</div><div class="tag">#DRAMA</div><div class="tag">#TRAVEL</div><div class="tag">#CHILL</div><div class="tag">#GOSSIP</div></div></div></div>
 
-<!-- 6–15 YENİ -->
 <div class="card card-6" style="background-image:url('images/bg6.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK</p><h1>GÜLDÜĞÜNÜZ AN</h1><p>En alakasız anda.</p></div></div>
 <div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><p>KLASİK</p><h1>TARTIŞMA</h1><p>Nereye gidileceği.</p></div></div>
 <div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><p>ORTAK</p><h1>TAKINTI</h1><p>Gece atıştırmaları.</p></div></div>

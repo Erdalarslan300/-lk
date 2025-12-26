@@ -17,24 +17,6 @@ body{
   overflow:hidden;
 }
 
-/* Netflix N Logo Stili */
-.netflix-logo {
-  position: absolute;
-  top: 30px;
-  left: 24px;
-  font-size: 42px;
-  font-weight: 900;
-  color: #E50914; /* Netflix Kırmızısı */
-  z-index: 100;
-  font-family: 'Arial Black', sans-serif;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.match-text {
-  color: #46d369; /* Netflix Yeşil Eşleşme Rengi */
-  font-weight: 700;
-}
-
 .story-nav{
   position:fixed;
   top:12px;
@@ -67,10 +49,12 @@ body{
 }
 .card.active{display:block}
 
+/* Arka plan üzerine saydam renkli katman */
 .overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.85));
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(0, 0, 0, 0.8));
+  z-index: 1;
 }
 
 .content{
@@ -84,6 +68,12 @@ body{
   padding:0 24px;
   text-align:center;
   opacity:0;
+}
+
+/* 2. Kart İçeriğini Ortalamak İçin Özel Stil */
+.card-2 .content {
+  bottom: 50% !important;
+  transform: translate(-50%, 50%) !important;
 }
 
 .card-1 .content{animation:fadeUp .8s ease forwards}
@@ -107,8 +97,8 @@ body{
   to{opacity:1;transform:translate(-50%,0)}
 }
 @keyframes slideRight{
-  from{opacity:0;transform:translate(calc(-50% + 60px),0)}
-  to{opacity:1;transform:translate(-50%,0)}
+  from{opacity:0;transform:translate(calc(-50% + 60px),50%)}
+  to{opacity:1;transform:translate(-50%,50%)}
 }
 @keyframes slideLeft{
   from{opacity:0;transform:translate(calc(-50% - 60px),0)}
@@ -206,17 +196,7 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card card-1 active" style="background-image:url('images/bg1.jpg')">
-  <div class="netflix-logo">N</div>
-  <div class="overlay"></div>
-  <div class="content">
-    <p>İLİŞKİ ÖZETİ · 2025</p>
-    <h1>ZIT KUTUPLAR</h1>
-    <p><span class="match-text">%88 Eşleşme</span> · 3 Sezon · HD</p>
-    <p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p>
-    <button class="play-btn" id="startBtn">▶ Oynat</button>
-  </div>
-</div>
+<div class="card card-1 active" style="background-image:url('images/bg1.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ ÖZETİ · 2025</p><h1>ZIT KUTUPLAR</h1><p>%88 Eşleşme · 3 Sezon · HD</p><p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p><button class="play-btn" id="startBtn">▶ Oynat</button></div></div>
 
 <div class="card card-2" style="background-image:url('images/bg2.jpg')"><div class="overlay"></div><div class="content"><p>SİZ TAM OLARAK BUSUNUZ</p><h1>KEDİ & KÖPEK</h1><div class="progress"></div><p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p></div></div>
 

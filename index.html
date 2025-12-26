@@ -49,12 +49,15 @@ body{
 }
 .card.active{display:block}
 
-/* Arka plan üzerine saydam renkli katman */
 .overlay{
   position:absolute;
   inset:0;
-  background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(0, 0, 0, 0.8));
-  z-index: 1;
+  background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.85));
+}
+
+/* Sadece 2. Kart İçin Renkli ve Saydam Katman */
+.card-2 .overlay {
+  background: linear-gradient(135deg, rgba(123, 97, 255, 0.4), rgba(255, 78, 205, 0.4), rgba(0, 0, 0, 0.7)) !important;
 }
 
 .content{
@@ -70,14 +73,15 @@ body{
   opacity:0;
 }
 
-/* 2. Kart İçeriğini Ortalamak İçin Özel Stil */
+/* 2. Kart Yazılarını Ortala */
 .card-2 .content {
   bottom: 50% !important;
   transform: translate(-50%, 50%) !important;
 }
 
 .card-1 .content{animation:fadeUp .8s ease forwards}
-.card-2 .content{animation:slideRight .8s ease forwards}
+/* 2. Kart animasyonu dikeyde ortalı kalacak şekilde güncellendi */
+.card-2 .content{animation:slideRightCenter .8s ease forwards}
 .card-3 .content{animation:zoomIn .8s ease forwards}
 .card-4 .content{animation:slideLeft .8s ease forwards}
 .card-5 .content{animation:fadeDown .8s ease forwards}
@@ -96,9 +100,9 @@ body{
   from{opacity:0;transform:translate(-50%,40px)}
   to{opacity:1;transform:translate(-50%,0)}
 }
-@keyframes slideRight{
-  from{opacity:0;transform:translate(calc(-50% + 60px),50%)}
-  to{opacity:1;transform:translate(-50%,50%)}
+@keyframes slideRightCenter{
+  from{opacity:0;transform:translate(calc(-50% + 60px), 50%)}
+  to{opacity:1;transform:translate(-50%, 50%)}
 }
 @keyframes slideLeft{
   from{opacity:0;transform:translate(calc(-50% - 60px),0)}

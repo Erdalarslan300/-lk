@@ -98,29 +98,33 @@ body{
   text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
-/* 4. Kart Bölünmüş Tasarım */
-.card-4 .split-top { height: 50%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 20px; }
-.card-4 .split-bottom { height: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-top: 2px solid #7b61ff; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-
-/* Ortak Stiller */
-.glass-panel {
+/* Tasarım Bileşenleri */
+.glass-box {
   background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 15px;
   margin: 10px 0;
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-.award-badge {
-  background: linear-gradient(45deg, #FFD700, #FFA500);
+.split-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.split-top { height: 50%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 20px; }
+.split-bottom { height: 50%; padding: 20px; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); border-top: 1px solid rgba(255,255,255,0.2); }
+
+.award-item {
+  background: linear-gradient(90deg, #f1c40f, #d4af37);
   color: #000;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 10px;
+  border-radius: 50px;
   font-weight: 800;
+  margin: 8px 0;
   font-size: 14px;
-  margin: 5px;
-  display: inline-block;
 }
 
 /* Animasyonlar */
@@ -130,9 +134,14 @@ body{
 .card-4 .content{animation:fadeUp .8s ease forwards}
 .card-5 .content{animation:fadeDown .8s ease forwards}
 .card-6 .content { animation: zoomIn 1s ease forwards; }
+.card-7 .content { animation: slideLeft 1s ease forwards; }
+.card-8 .content { animation: fadeUp 1s ease forwards; }
+.card-9 .content { animation: zoomIn 0.8s ease forwards; }
 .card-10 .content { animation: slideRight 1s ease forwards; }
+.card-11 .content { animation: fadeDown 1s ease forwards; }
 .card-12 .content { animation: zoomIn 1.2s ease forwards; }
 .card-13 .content { animation: fadeUp 1s ease forwards; }
+.card-14 .content { animation: slideLeft 1.2s ease forwards; }
 .card-15 .content { animation: zoomIn 1.5s ease forwards; }
 
 @keyframes fadeUp{
@@ -147,6 +156,10 @@ body{
   from{opacity:0;transform:translate(calc(-50% + 60px), 0)}
   to{opacity:1;transform:translate(-50%, 0)}
 }
+@keyframes slideLeft{
+  from{opacity:0;transform:translate(calc(-50% - 60px),0)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
 @keyframes zoomIn{
   from{opacity:0;transform:translate(-50%,0) scale(.85)}
   to{opacity:1;transform:translate(-50%,0) scale(1)}
@@ -157,32 +170,91 @@ body{
 }
 
 h1{font-size:40px;font-weight:800;margin:6px 0}
-h2{font-size:28px;font-weight:700;margin:6px 0}
-p{font-size:16px;opacity:.9;margin:4px 0}
+h2{font-size:32px;font-weight:700;margin:6px 0}
+p{font-size:18px;opacity:.9;margin:4px 0}
+
+.stat-box {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 15px 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.big-number {
+  display: block;
+  font-size: 64px;
+  font-weight: 800;
+  color: #1DB954;
+  margin: 10px 0;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-weight: 600;
+}
 
 .tags{
-  display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:20px;
 }
 .tag{
-  background:#fff; color:#000; padding:8px 16px; border-radius:999px; font-weight:700; font-size: 14px;
+  background:#fff;
+  color:#000;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:700;
+  box-shadow:inset 0 -4px 0 #1DB954;
 }
 
 .progress{
-  height:8px; border-radius:8px; background:linear-gradient(90deg,#ff4ecd,#7b61ff); margin:12px 0;
+  height:8px;
+  border-radius:8px;
+  background:linear-gradient(90deg,#ff4ecd,#7b61ff);
+  margin:12px 0;
 }
 
 .click-left,.click-right{
-  position:fixed; top:0; width:50%; height:100vh; z-index:40; pointer-events:none;
+  position:fixed;
+  top:0;
+  width:50%;
+  height:100vh;
+  z-index:40;
+  pointer-events:none;
 }
 .click-left{left:0}
 .click-right{right:0}
 
 .audio-btn{
-  position:fixed; top:16px; right:16px; z-index:60; background:rgba(0,0,0,.6); border-radius:50%; padding:10px 12px; font-size:18px; cursor:pointer;
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:60;
+  background:rgba(0,0,0,.6);
+  border-radius:50%;
+  padding:10px 12px;
+  font-size:18px;
+  cursor:pointer;
 }
 
 .play-btn{
-  margin-top:20px; padding:16px 44px; font-size:18px; font-weight:700; border-radius:999px; border:none; cursor:pointer; background:#1DB954; color:#000; animation:pulse 1.6s infinite;
+  margin-top:20px;
+  padding:16px 44px;
+  font-size:18px;
+  font-weight:700;
+  border-radius:999px;
+  border:none;
+  cursor:pointer;
+  background:#1DB954;
+  color:#000;
+  animation:pulse 1.6s infinite;
 }
 @keyframes pulse{
   0%{box-shadow:0 0 0 0 rgba(29,185,84,.7)}
@@ -228,31 +300,33 @@ p{font-size:16px;opacity:.9;margin:4px 0}
 </div>
 
 <div class="card card-3" style="background-image:url('images/bg3.jpg')">
-  <div class="overlay" style="background: radial-gradient(circle, rgba(255,0,150,0.3) 0%, rgba(0,0,0,0.8) 100%);"></div>
+  <div class="overlay" style="background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(123, 97, 255, 0.2))"></div>
   <div class="content">
     <p style="letter-spacing: 5px; color: #ff4ecd; font-weight: 800;">İLİŞKİ AURANIZ</p>
-    <h1 style="background: linear-gradient(to right, #ff4ecd, #7b61ff, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 50px;">KAOTİK HUZUR</h1>
-    <p style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px;">Fırtınadan sonraki sessizlik gibisiniz.</p>
+    <h1 style="background: linear-gradient(to right, #ff4ecd, #7b61ff, #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 52px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">KAOTİK HUZUR</h1>
+    <p style="margin-top: 15px; font-style: italic;">Fırtınadan sonraki sessizlik gibisiniz.</p>
   </div>
 </div>
 
 <div class="card card-4" style="background-image:url('images/bg4.jpg')">
   <div class="overlay"></div>
-  <div class="split-top">
-    <div style="text-align:center; width:100%;">
+  <div class="split-container">
+    <div class="split-top">
+      <div style="text-align:center; padding: 20px;">
         <p>BİRLİKTE GEÇEN</p>
         <h1>2 YIL 7 AY</h1>
-        <p>954 gündür ve hâlâ buradasınız.</p>
+        <div class="progress" style="width: 60%; margin: 10px auto;"></div>
+      </div>
     </div>
-  </div>
-  <div class="split-bottom">
-    <h2 style="color:#7b61ff; margin-bottom:10px;">✨ Burç Uyumu ✨</h2>
-    <div style="display:flex; gap:20px; align-items:center; margin-bottom:10px;">
-        <div style="text-align:center;">♈ <p>Koç</p></div>
-        <div style="font-size:24px; color:#ff4ecd;">❤</div>
-        <div style="text-align:center;">♌ <p>Aslan</p></div>
+    <div class="split-bottom">
+      <h2 style="font-size: 24px; color: #7b61ff;">✨ Burç Uyumu ✨</h2>
+      <div style="display:flex; justify-content:center; align-items:center; gap:20px; margin: 15px 0;">
+        <div style="text-align:center;"><span style="font-size:40px;">♈</span><p style="font-size:12px;">Koç</p></div>
+        <div style="font-size:30px; color:#ff4ecd;">❤</div>
+        <div style="text-align:center;"><span style="font-size:40px;">♌</span><p style="font-size:12px;">Aslan</p></div>
+      </div>
+      <p style="font-size:14px; line-height:1.4;">"Ateş grubu enerjinizle birbirinizi her an yeniden keşfediyorsunuz."</p>
     </div>
-    <p style="font-style:italic; font-size:14px; text-align:center;">"Ateş grubu enerjinizle birbirinizi her an yeniden keşfediyorsunuz."</p>
   </div>
 </div>
 
@@ -261,83 +335,87 @@ p{font-size:16px;opacity:.9;margin:4px 0}
 <div class="card card-6" style="background-image:url('images/bg6.jpg')">
   <div class="overlay"></div>
   <div class="content">
-    <p style="font-weight:800; color:#1DB954;">2025 İSTATİSTİKLERİ</p>
-    <div class="glass-panel">
-        <p>📍 En Çok Gidilen Yer</p>
-        <h2 style="margin:0;">Ortaköy</h2>
+    <p style="font-weight: 800; color: #1DB954; letter-spacing: 2px;">2025 İSTATİSTİKLERİ</p>
+    <div class="glass-box">
+      <p style="font-size: 14px;">📍 En Çok Gidilen Yer</p>
+      <h2 style="font-size: 24px; margin: 5px 0;">Ortaköy</h2>
     </div>
-    <div class="glass-panel">
-        <p>🗣 Favori Hitaplar</p>
-        <p style="font-weight:700;">"Canım, Yavrum, Kuzi"</p>
+    <div class="glass-box">
+      <p style="font-size: 14px;">🗣 Favori Hitaplar</p>
+      <p style="font-weight: 700; color: #ff4ecd;">"Aşkım, Bitanem, Kuzi"</p>
     </div>
-    <div style="display:flex; gap:10px; justify-content:center;">
-        <div class="glass-panel" style="flex:1; font-size:12px;">
-            <strong>Murat'ın Sevdikleri</strong>
-            <ul style="padding:0; list-style:none;"><li>☕ Kahve</li><li>🎮 Oyun</li><li>🚗 Gezmek</li></ul>
-        </div>
-        <div class="glass-panel" style="flex:1; font-size:12px;">
-            <strong>Buse'nin Sevdikleri</strong>
-            <ul style="padding:0; list-style:none;"><li>🍕 Pizza</li><li>🐶 Köpekler</li><li>📸 Fotoğraf</li></ul>
-        </div>
+    <div style="display:flex; gap:10px;">
+      <div class="glass-box" style="flex:1; font-size: 13px;">
+        <strong>Murat'ın Sevdikleri</strong>
+        <p>☕ Kahve</p><p>🎮 Oyun</p><p>🚗 Gezmek</p>
+      </div>
+      <div class="glass-box" style="flex:1; font-size: 13px;">
+        <strong>Buse'nin Sevdikleri</strong>
+        <p>🍕 Pizza</p><p>🐶 Köpekler</p><p>📸 Fotoğraf</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><h2>NE YİYECEĞİMİZE</h2><h1>KARAR VEREMEME</h1><p>Ortalama 45 dakika.</p></div></div>
-<div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><h1>GECE MESAJLARI</h1><p>Uyudun mu? (420 kez)</p></div></div>
-<div class="card card-9" style="background-image:url('images/bg9.jpg')"><div class="overlay"></div><div class="content"><h1>BİZİM ŞARKI</h1><p>🎵 En Çok Dinlenen</p></div></div>
+<div class="card card-7" style="background-image:url('images/bg7.jpg')"><div class="overlay"></div><div class="content"><h2>NE YİYECEĞİMİZE</h2><h1>KARAR VEREMEME</h1><div class="stat-box"><p>Ortalama Karar Süresi</p><span class="big-number" style="color:#ff4ecd">45 DK</span><div class="progress"></div><p>Ama sonuç hep aynı: "Sen ne istersen o."</p></div></div></div>
+
+<div class="card card-8" style="background-image:url('images/bg8.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK KULLANILAN</p><h1>GECE MESAJLARI</h1><div class="stat-box"><div class="list-item"><span>"Uyudun mu?"</span><span>420 kez</span></div><div class="list-item"><span>"Seni seviyorum"</span><span>∞ kez</span></div><div class="list-item"><span>"Acıktım..."</span><span>185 kez</span></div></div></div></div>
+
+<div class="card card-9" style="background-image:url('images/bg9.jpg')"><div class="overlay"></div><div class="content"><p>BU YILIN SOUNDTRACK'İ</p><div style="margin:20px auto; width:120px; height:120px; border-radius:50%; background:linear-gradient(45deg, #1DB954, #fff); display:flex; align-items:center; justify-content:center; color:#000; font-size:40px;">🎵</div><h1>BİZİM ŞARKI</h1><p>Tekrar tekrar çalındı.</p></div></div>
 
 <div class="card card-10" style="background-image:url('images/bg10.jpg')">
   <div class="overlay"></div>
   <div class="content">
+    <p style="font-weight:800; color:#E50914;">WATCH LIST</p>
     <h1>ORTAK FİLM & DİZİ</h1>
-    <div class="glass-panel" style="border-left: 5px solid #E50914;">
-        <p>🎬 Favori Filmimiz</p>
-        <h2 style="font-size:20px;">Inception</h2>
+    <div class="glass-box" style="text-align: left; border-left: 4px solid #E50914;">
+      <p style="font-size: 14px; opacity: 0.7;">🎬 Ortak Filmler</p>
+      <p style="font-weight: 700;">Inception, Interstellar, Soul</p>
     </div>
-    <div class="glass-panel" style="border-left: 5px solid #E50914;">
-        <p>📺 Favori Dizimiz</p>
-        <h2 style="font-size:20px;">How I Met Your Mother</h2>
+    <div class="glass-box" style="text-align: left; border-left: 4px solid #E50914;">
+      <p style="font-size: 14px; opacity: 0.7;">📺 Ortak Diziler</p>
+      <p style="font-weight: 700;">HIMYM, Dark, Succession</p>
     </div>
   </div>
 </div>
 
-<div class="card card-11" style="background-image:url('images/bg11.jpg')"><div class="overlay"></div><div class="content"><h1>GEZİLEN YERLER</h1><p>7 Şehir & 120 Mekan</p></div></div>
+<div class="card card-11" style="background-image:url('images/bg11.jpg')"><div class="overlay"></div><div class="content"><p>GEZİLEN YERLER</p><h1>7 ŞEHİR & 120 MEKAN</h1><div class="tags"><div class="tag">📍 İstanbul</div><div class="tag">📍 İzmir</div><div class="tag">📍 Mutfak</div></div><p>Ve sayısız anı toplandı.</p></div></div>
 
 <div class="card card-12" style="background-image:url('images/bg12.jpg')">
   <div class="overlay"></div>
   <div class="content">
-    <p>GELECEK PLANLARI</p>
+    <p>ROADMAP</p>
     <h1>2026 HEDEFLERİ</h1>
-    <div class="glass-panel" style="text-align:left;">
-        <p>✅ 1. Birlikte yurt dışı tatili</p>
-        <p>✅ 2. Daha çok kamp yapmak</p>
-        <p>✅ 3. Aynı evde ilk kahvaltı</p>
+    <div class="glass-box">
+      <div class="list-item"><span>🚀 Birlikte Yurt Dışı</span><span>🎯</span></div>
+      <div class="list-item"><span>🏡 Yeni Bir Ev</span><span>🎯</span></div>
+      <div class="list-item"><span>📸 1000 Yeni Anı</span><span>🎯</span></div>
     </div>
+    <p style="font-size: 14px; margin-top: 10px;">Birlikte her şey mümkün.</p>
   </div>
 </div>
 
 <div class="card card-13" style="background-image:url('images/bg13.jpg')">
   <div class="overlay"></div>
   <div class="content">
-    <p>VE KAZANANLAR...</p>
+    <p style="font-weight:800; color:#f1c40f;">THE WINNERS ARE...</p>
     <h1>YILIN ÖDÜLLERİ</h1>
-    <div class="award-badge">🏆 En Çok Gezen Çift</div>
-    <div class="award-badge">☕ En Çok Kahve Tüketenler</div>
-    <div class="award-badge">🌅 En Çok Sabahlayanlar</div>
+    <div class="award-item">🏆 En Çok Gezen Çift</div>
+    <div class="award-item">🏆 En Çok Birlikte Sabahlayan Çift</div>
+    <div class="award-item">🏆 En İyi Gurme Ekibi</div>
   </div>
 </div>
 
-<div class="card card-14" style="background-image:url('images/bg14.jpg')"><div class="overlay"></div><div class="content"><h1>ERKEN UYUMAK</h1><p>Başarı Oranı: %2</p></div></div>
+<div class="card card-14" style="background-image:url('images/bg14.jpg')"><div class="overlay"></div><div class="content"><p>EN ÇOK İHLAL EDİLEN KURAL</p><h1>"BUGÜN ERKEN UYUYALIM"</h1><div class="stat-box"><p>Başarı Oranı</p><span class="big-number" style="color:red">%2</span></div></div></div>
 
 <div class="card card-15" style="background-image:url('images/bg15.jpg')">
   <div class="overlay"></div>
   <div class="content" style="bottom: 50% !important; transform: translate(-50%, 50%) !important;">
-    <div style="font-size:80px; margin-bottom:10px;">❤</div>
-    <h1 style="font-size:50px;">İYİ Kİ VARSIN</h1>
-    <p style="font-size:20px; letter-spacing:2px; opacity:0.8;">BU HİKAYENİN EN GÜZEL KISMI SENSİN.</p>
-    <div class="progress" style="width:100px; margin: 20px auto;"></div>
-    <p>2025 · SON</p>
+    <div style="font-size: 80px; margin-bottom: 20px;">❤️</div>
+    <h1 style="font-size: 48px; line-height: 1.1;">İYİ Kİ VARSIN</h1>
+    <p style="font-size: 20px; opacity: 0.7; letter-spacing: 2px;">2025'in en güzel anı sendin.</p>
+    <div class="progress" style="width: 100px; margin: 20px auto; background: #fff;"></div>
+    <p style="font-size: 14px;">Seni Seviyorum</p>
   </div>
 </div>
 

@@ -17,6 +17,24 @@ body{
   overflow:hidden;
 }
 
+/* Netflix N Logo Stili */
+.netflix-logo {
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  font-size: 42px;
+  font-weight: 900;
+  color: #E50914; 
+  z-index: 100;
+  font-family: 'Arial Black', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.match-text {
+  color: #46d369; 
+  font-weight: 700;
+}
+
 .story-nav{
   position:fixed;
   top:12px;
@@ -55,9 +73,9 @@ body{
   background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.85));
 }
 
-/* Sadece 2. Kart İçin Renkli ve Saydam Katman */
+/* 2. Kart Özel Katmanı */
 .card-2 .overlay {
-  background: linear-gradient(135deg, rgba(123, 97, 255, 0.4), rgba(255, 78, 205, 0.4), rgba(0, 0, 0, 0.7)) !important;
+  background: linear-gradient(135deg, rgba(123, 97, 255, 0.6), rgba(255, 78, 205, 0.6), rgba(0, 0, 0, 0.8)) !important;
 }
 
 .content{
@@ -73,14 +91,19 @@ body{
   opacity:0;
 }
 
-/* 2. Kart Yazılarını Ortala */
+/* 2. Kart Yazı Hizalama ve Vurgu */
 .card-2 .content {
   bottom: 50% !important;
   transform: translate(-50%, 50%) !important;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8); /* Yazı vurgusu */
+}
+
+.card-2 .content h1 {
+  font-size: 48px;
+  letter-spacing: -1px;
 }
 
 .card-1 .content{animation:fadeUp .8s ease forwards}
-/* 2. Kart animasyonu dikeyde ortalı kalacak şekilde güncellendi */
 .card-2 .content{animation:slideRightCenter .8s ease forwards}
 .card-3 .content{animation:zoomIn .8s ease forwards}
 .card-4 .content{animation:slideLeft .8s ease forwards}
@@ -100,6 +123,7 @@ body{
   from{opacity:0;transform:translate(-50%,40px)}
   to{opacity:1;transform:translate(-50%,0)}
 }
+/* 2. Kart için ortalanmış animasyon */
 @keyframes slideRightCenter{
   from{opacity:0;transform:translate(calc(-50% + 60px), 50%)}
   to{opacity:1;transform:translate(-50%, 50%)}
@@ -200,9 +224,27 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card card-1 active" style="background-image:url('images/bg1.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ ÖZETİ · 2025</p><h1>ZIT KUTUPLAR</h1><p>%88 Eşleşme · 3 Sezon · HD</p><p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p><button class="play-btn" id="startBtn">▶ Oynat</button></div></div>
+<div class="card card-1 active" style="background-image:url('images/bg1.jpg')">
+  <div class="netflix-logo">N</div>
+  <div class="overlay"></div>
+  <div class="content">
+    <p>İLİŞKİ ÖZETİ · 2025</p>
+    <h1>ZIT KUTUPLAR</h1>
+    <p><span class="match-text">%88 Eşleşme</span> · 3 Sezon · HD</p>
+    <p>Biri plan yapmadan adım atmaz, diğeri sabah uyanıp şehir değiştirebilir.</p>
+    <button class="play-btn" id="startBtn">▶ Oynat</button>
+  </div>
+</div>
 
-<div class="card card-2" style="background-image:url('images/bg2.jpg')"><div class="overlay"></div><div class="content"><p>SİZ TAM OLARAK BUSUNUZ</p><h1>KEDİ & KÖPEK</h1><div class="progress"></div><p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p></div></div>
+<div class="card card-2" style="background-image:url('images/bg2.jpg')">
+  <div class="overlay"></div>
+  <div class="content">
+    <p>SİZ TAM OLARAK BUSUNUZ</p>
+    <h1>KEDİ & KÖPEK</h1>
+    <div class="progress"></div>
+    <p>Sürekli didişen ama birbirini görmeden duramayan ikili.</p>
+  </div>
+</div>
 
 <div class="card card-3" style="background-image:url('images/bg3.jpg')"><div class="overlay"></div><div class="content"><p>İLİŞKİ AURANIZ</p><h1>KAOTİK HUZUR</h1><p>Fırtınadan sonraki sessizlik gibisiniz.</p></div></div>
 

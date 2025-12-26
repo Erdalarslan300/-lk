@@ -244,7 +244,7 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   cursor:pointer;
 }
 
-.play-btn{
+.play-btn, .restart-btn{
   margin-top:20px;
   padding:16px 44px;
   font-size:18px;
@@ -255,23 +255,18 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   background:#1DB954;
   color:#000;
   animation:pulse 1.6s infinite;
+  z-index:100; /* Tıklama katmanlarının üzerine çıkarıldı */
+  position: relative;
 }
 
-/* Başa Dön Butonu Özel Stili */
 .restart-btn {
-  margin-top: 30px;
-  padding: 12px 30px;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 999px;
-  border: 2px solid #fff;
-  cursor: pointer;
   background: transparent;
   color: #fff;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  border: 2px solid #fff;
+  animation: none;
+  margin-top: 30px;
 }
+
 .restart-btn:hover {
   background: #fff;
   color: #000;
@@ -437,7 +432,7 @@ p{font-size:18px;opacity:.9;margin:4px 0}
     <p style="font-size: 20px; opacity: 0.7; letter-spacing: 2px;">2025'in en güzel anı sendin.</p>
     <div class="progress" style="width: 100px; margin: 20px auto; background: #fff;"></div>
     <p style="font-size: 14px;">Seni Seviyorum</p>
-    <button class="restart-btn" id="restartBtn">↺ Tekrar İzle</button>
+    <button class="restart-btn" id="restartBtn">↺ TEKRAR İZLE</button>
   </div>
 </div>
 
@@ -450,7 +445,13 @@ const bars=document.querySelectorAll('.story-nav span i');
 const DURATION=8000;
 let index=0,raf=null,started=false;
 
-function resetBars(){bars.forEach(b=>b.style.width='0%')}
+function resetBars(){
+  bars.forEach(b => {
+    b.style.width = '0%';
+    b.parentElement.style.background = 'rgba(255,255,255,.25)';
+  });
+}
+
 function show(i){
   cancelAnimationFrame(raf);
   cards.forEach((c,idx)=>{
@@ -459,8 +460,17 @@ function show(i){
     if(content) content.style.opacity=1;
   });
   index=i;
-  if(started && index>0) startProgress();
+  
+  // Önceki barları dolu göster
+  for(let b=0; b<i; b++) bars[b].style.width = '100%';
+  // Sonraki barları boşalt
+  for(let b=i; b<bars.length; b++) bars[b].style.width = '0%';
+
+  if(started && index > 0 && index < cards.length) {
+      startProgress();
+  }
 }
+
 function startProgress(){
   const bar=bars[index],start=performance.now();
   function animate(now){
@@ -471,20 +481,23 @@ function startProgress(){
   }
   raf=requestAnimationFrame(animate);
 }
+
 document.getElementById('startBtn').onclick=()=>{
-  started=true;resetBars();show(1);
+  started=true;
+  resetBars();
+  show(1);
   document.querySelector('.click-left').style.pointerEvents='auto';
   document.querySelector('.click-right').style.pointerEvents='auto';
 };
 
-// Başa Dönme İşlemi
-document.getElementById('restartBtn').onclick=()=>{
-  started=true; 
-  resetBars(); 
+// YENİLENEN BAŞA DÖN BUTONU MANTIĞI
+document.getElementById('restartBtn').addEventListener('click', (e) => {
+  e.stopPropagation(); // Tıklamanın diğer katmanlara gitmesini engeller
+  started = false; // Akışı durdur
+  resetBars();
   show(0); // İlk karta dön
-  // İlk kartta "Oynat" butonu olduğu için otomatik ilerlemeyi durdurmak gerekirse show(0) yeterli. 
-  // Ama doğrudan akış başlasın isterseniz show(1) yapılabilir. Show(0) en güvenlisidir.
-};
+  console.log("Başa dönüldü");
+});
 
 document.querySelector('.click-right').onclick=()=>{if(index<cards.length-1){resetBars();show(index+1)}}
 document.querySelector('.click-left').onclick=()=>{if(index>0){resetBars();show(index-1)}}

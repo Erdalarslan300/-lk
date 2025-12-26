@@ -83,7 +83,7 @@ body{
   bottom:64px;
   left:50%;
   transform:translateX(-50%);
-  z-index:5;
+  z-index:10; /* Content z-index artırıldı */
   width:100%;
   max-width:520px;
   padding:0 24px;
@@ -244,7 +244,7 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   cursor:pointer;
 }
 
-.play-btn, .restart-btn{
+.play-btn {
   margin-top:20px;
   padding:16px 44px;
   font-size:18px;
@@ -255,19 +255,29 @@ p{font-size:18px;opacity:.9;margin:4px 0}
   background:#1DB954;
   color:#000;
   animation:pulse 1.6s infinite;
-  z-index:100; /* Tıklama katmanlarının üzerine çıkarıldı */
   position: relative;
+  z-index: 100;
 }
 
 .restart-btn {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-  animation: none;
   margin-top: 30px;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 999px;
+  border: 3px solid #fff;
+  cursor: pointer;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  position: relative;
+  z-index: 999; /* En üstte olması için */
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
-.restart-btn:hover {
+.restart-btn:active {
+  transform: scale(0.95);
   background: #fff;
   color: #000;
 }
@@ -432,24 +442,23 @@ p{font-size:18px;opacity:.9;margin:4px 0}
     <p style="font-size: 20px; opacity: 0.7; letter-spacing: 2px;">2025'in en güzel anı sendin.</p>
     <div class="progress" style="width: 100px; margin: 20px auto; background: #fff;"></div>
     <p style="font-size: 14px;">Seni Seviyorum</p>
-    <button class="restart-btn" id="restartBtn">↺ TEKRAR İZLE</button>
+    <button class="restart-btn" id="restartBtn">BAŞA DÖN</button>
   </div>
 </div>
 
-<div class="click-left"></div>
-<div class="click-right"></div>
+<div class="click-left" id="clickL"></div>
+<div class="click-right" id="clickR"></div>
 
 <script>
 const cards=document.querySelectorAll('.card');
 const bars=document.querySelectorAll('.story-nav span i');
+const clickR=document.getElementById('clickR');
+const clickL=document.getElementById('clickL');
 const DURATION=8000;
 let index=0,raf=null,started=false;
 
 function resetBars(){
-  bars.forEach(b => {
-    b.style.width = '0%';
-    b.parentElement.style.background = 'rgba(255,255,255,.25)';
-  });
+  bars.forEach(b => b.style.width = '0%');
 }
 
 function show(i){
@@ -459,16 +468,23 @@ function show(i){
     const content = c.querySelector('.content');
     if(content) content.style.opacity=1;
   });
-  index=i;
   
-  // Önceki barları dolu göster
-  for(let b=0; b<i; b++) bars[b].style.width = '100%';
-  // Sonraki barları boşalt
-  for(let b=i; b<bars.length; b++) bars[b].style.width = '0%';
+  index=i;
 
-  if(started && index > 0 && index < cards.length) {
-      startProgress();
+  // Çubukları güncelle
+  bars.forEach((bar, idx) => {
+    if(idx < i) bar.style.width = '100%';
+    else if(idx > i) bar.style.width = '0%';
+  });
+
+  // 15. KARTA ÖZEL: Tıklama katmanını kapat ki butona basılabilsin
+  if(i === 14) {
+    clickR.style.pointerEvents = 'none';
+  } else if(started) {
+    clickR.style.pointerEvents = 'auto';
   }
+
+  if(started && index>0 && index < cards.length - 1) startProgress();
 }
 
 function startProgress(){
@@ -486,21 +502,21 @@ document.getElementById('startBtn').onclick=()=>{
   started=true;
   resetBars();
   show(1);
-  document.querySelector('.click-left').style.pointerEvents='auto';
-  document.querySelector('.click-right').style.pointerEvents='auto';
+  clickL.style.pointerEvents='auto';
+  clickR.style.pointerEvents='auto';
 };
 
-// YENİLENEN BAŞA DÖN BUTONU MANTIĞI
-document.getElementById('restartBtn').addEventListener('click', (e) => {
-  e.stopPropagation(); // Tıklamanın diğer katmanlara gitmesini engeller
-  started = false; // Akışı durdur
+// BAŞA DÖN BUTONU KESİN ÇÖZÜM
+document.getElementById('restartBtn').onclick = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  started = false;
   resetBars();
-  show(0); // İlk karta dön
-  console.log("Başa dönüldü");
-});
+  show(0);
+};
 
-document.querySelector('.click-right').onclick=()=>{if(index<cards.length-1){resetBars();show(index+1)}}
-document.querySelector('.click-left').onclick=()=>{if(index>0){resetBars();show(index-1)}}
+clickR.onclick=()=>{if(index<cards.length-1){resetBars();show(index+1)}}
+clickL.onclick=()=>{if(index>0){resetBars();show(index-1)}}
 
 const audio=document.getElementById('bgm'),audioBtn=document.getElementById('audioBtn');
 audioBtn.onclick=()=>{audio.paused?audio.play():audio.pause();audioBtn.textContent=audio.paused?'🔇':'🔊'}
